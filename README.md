@@ -13,6 +13,9 @@
 
 *	Handling travel reimbursement is a logistical challenge where registrants are reliant on the 			approval process in order to attend the event as well as face inefficient methods of sending the 		required reimbursement forms.
 
-###### Point of Contact
+*	Finding a suitable project submission platform and cross-referencing registrant information with 		project submissions data is tedious.
 
+
+
+###### Point of Contact
 __For general questions, feature requests or an opportunity to work with us, email us at contact@hackarizona.org__
