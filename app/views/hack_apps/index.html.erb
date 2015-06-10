@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<h1>My Applications</h1>
+
+<div class="ui grid fluid">
+
+  <div class="five wide column">
+
+  <div class="ui card">
+    <div class="image">
+      <%= image_tag "hackarizona_logo.png" %>
+    </div>
+  <div class="content">
+    <div class="header">Hack Arizona</div>
+    <div class="meta">2 days ago</div>
+    <div class="description">
+      <p>Hack Arizona will be held March 6th - 8th, 2015 at The University of Arizona. 36 Hours, 400+ Hackers. In partnership with University of Arizona Libraries.</p>
+    </div>
+  </div>
+  <div class="extra content">
+      <span class="right floated">
+        <a>View Application</a>
+      </span>
+      <span>
+        <i class="users icon"></i>
+       4 Teammates
+      </span>
+    </div>
+</div>
+
+
+</div>
+    <% @hack_apps.each do |hack_app| %>
+      <div class="five wide column">
+        <div class="ui card fluid">
+        <%= link_to hack_app.skill, hack_app %>
+        </div>
+      </div>
+    <% end %>
+</div>
+
+<%= link_to 'New Hack app', new_hack_app_path %>
+
+<script>
+$('.ui card .image').dimmer({
+  on: 'hover'
+});
+</script>
