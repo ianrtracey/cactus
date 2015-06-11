@@ -1,48 +1,123 @@
-<p id="notice"><%= notice %></p>
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Registrations
+            <small>Control panel</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Registrations</li>
+          </ol>
+        </section>
 
-<h1>My Applications</h1>
+        <!-- Main content -->
+        <section class="content">
+          <!-- Small boxes (Stat box) -->
+          <div class="row">
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-yellow">
+                <div class="inner">
+                  <h3>44</h3>
+                  <p>Registrations</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-person-add"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-green">
+                <div class="inner">
+                  <h3>30</h3>
+                  <p>Registrants Accepted</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-stats-bars"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+            </div><!-- ./col -->
 
-<div class="ui grid fluid">
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-blue">
+                <div class="inner">
+                  <h3>7</h3>
+                  <p>Pending Registrations</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-pie-graph"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+            </div><!-- ./col -->
+          </div><!-- /.row -->
+          <!-- Main row -->
+          <div class="row">
+            <div class="row">
+            <div class="col-xs-12">
+              <div class="box">
+                <div class="box-header">
+                  <h3 class="box-title">Data Table With Full Features</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <table id="registrations-table">
+                       <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>School</th>
+                          <th>Resume</th>
+                          <th>Facebook</th>
+                          <th>Github</th>
+                          <th>Website</th>
+                        </tr>
+                       </thead>
 
-  <div class="five wide column">
+                       <tfoot>
+                        <tr>
+                          <th>Name</th>
+                          <th>School</th>
+                          <th>Resume</th>
+                          <th>Facebook</th>
+                          <th>Github</th>
+                          <th>Website</th>
+                        </tr>
+                       </tfoot>
 
-  <div class="ui card">
-    <div class="image">
-      <%= image_tag "hackarizona_logo.png" %>
-    </div>
-  <div class="content">
-    <div class="header">Hack Arizona</div>
-    <div class="meta">2 days ago</div>
-    <div class="description">
-      <p>Hack Arizona will be held March 6th - 8th, 2015 at The University of Arizona. 36 Hours, 400+ Hackers. In partnership with University of Arizona Libraries.</p>
-    </div>
-  </div>
-  <div class="extra content">
-      <span class="right floated">
-        <a>View Application</a>
-      </span>
-      <span>
-        <i class="users icon"></i>
-       4 Teammates
-      </span>
-    </div>
-</div>
+                       <tbody>
+                <% @hack_apps.each do |hack_app| %>
+                      <% unless hack_app.school == "" %>
+                      <tr>
+                      <td><%= hack_app.first_name+' '+hack_app.last_name %> </td>
+                      <td><%= hack_app.school %></td>
+                      <td><%= hack_app.resume %></td>
+                      <td><%= hack_app.facebook %></td>
+                      <td><%= hack_app.github %></td>
+                      <td><%= hack_app.website %></td>
+                      </tr>
+                      <% end %>
+                <% end %>
+                       </tbody>
+                  </table>
+
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div><!-- /.col -->
+          </div>
 
 
-</div>
-    <% @hack_apps.each do |hack_app| %>
-      <div class="five wide column">
-        <div class="ui card fluid">
-        <%= link_to hack_app.skill, hack_app %>
-        </div>
-      </div>
-    <% end %>
-</div>
 
-<%= link_to 'New Hack app', new_hack_app_path %>
+          </div><!-- /.row (main row) -->
 
-<script>
-$('.ui card .image').dimmer({
-  on: 'hover'
-});
-</script>
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#registrations-table').DataTable();
+} );
+    </script>
