@@ -35,6 +35,12 @@ gem 'simple_form'
 gem 'fabrication'
 gem 'faker'
 
+# Used for importing data from csv
+gem 'roo'
+
+# Used for displaying fancy tables
+gem 'jquery-datatables-rails', '~> 3.3.0'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

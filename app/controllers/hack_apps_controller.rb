@@ -21,6 +21,7 @@ class HackAppsController < ApplicationController
   def edit
   end
 
+
   # POST /hack_apps
   # POST /hack_apps.json
   def create
@@ -51,6 +52,9 @@ class HackAppsController < ApplicationController
     end
   end
 
+  def import
+  end
+
   # DELETE /hack_apps/1
   # DELETE /hack_apps/1.json
   def destroy
@@ -69,6 +73,6 @@ class HackAppsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hack_app_params
-      params.require(:hack_app).permit(:why_this_hackathoh, )
+      params.require(:hack_app).permit(:id, :status)
     end
 end

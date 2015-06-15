@@ -3,7 +3,13 @@ Rails.application.routes.draw do
   resources :hackathons
   devise_for :users
   resources :users
-  resources :hack_apps
+  resources :hack_apps do
+       get 'hack_apps/import' => 'hack_apps#import'
+       put 'hack_apps/approve' => 'hack_apps#approve'
+       member do 
+        put 'approve'
+       end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -11,25 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150610181954) do
+ActiveRecord::Schema.define(version: 20150615003223) do
 
   create_table "hack_apps", force: :cascade do |t|
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
     t.integer  "user_id"
-    t.integer  "teammates"
-    t.text     "why_this_hackathon"
-    t.string   "skill"
-    t.string   "first_name",           default: ""
-    t.string   "last_name",            default: ""
-    t.string   "school",               default: ""
-    t.string   "resume",               default: ""
-    t.string   "facebook",             default: ""
-    t.string   "github",               default: ""
-    t.string   "website",              default: ""
-    t.string   "language_proficiency", default: ""
+    t.integer  "hackathon_id"
+    t.datetime "submitted_at"
+    t.string   "first_name",                        default: ""
+    t.string   "last_name",                         default: ""
+    t.string   "email",                             default: ""
+    t.string   "gender",                            default: ""
+    t.integer  "age",                               default: 0
+    t.string   "school",                            default: ""
+    t.boolean  "do_you_need_travel_reimbursement?", default: false
+    t.boolean  "is_this_your_first_hackathon?",     default: false
+    t.string   "skills",                            default: ""
+    t.text     "past_projects",                     default: ""
+    t.text     "why_hack_arizona",                  default: ""
+    t.string   "github",                            default: ""
+    t.string   "linkedin",                          default: ""
+    t.string   "website",                           default: ""
+    t.string   "resume",                            default: ""
+    t.string   "teammates",                         default: ""
+    t.string   "tshirt_size",                       default: ""
+    t.boolean  "accepted_code_of_conduct",          default: false
+    t.string   "status",                            default: "Undecided"
+    t.datetime "decision_date"
+    t.integer  "decision_made_by"
   end
 
+  add_index "hack_apps", ["hackathon_id"], name: "hackathon_id_ix"
   add_index "hack_apps", ["user_id"], name: "user_id_ix"
 
   create_table "hackathons", force: :cascade do |t|

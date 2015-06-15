@@ -13,8 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require app.js
-//= require dashboard.js
-//= require dashboard2.js
 //= requie demo.js
+//= require dataTables/jquery.dataTables
+//= datatables.js
 //= require_tree .

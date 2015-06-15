@@ -11,9 +11,10 @@
  * file per style scope.
  *
  *= require_tree .
- *= require bootstrap.min.css
+ *= require dataTables/jquery.dataTables
  *= require AdminLTE.css
  *= iCheck/square/blue.css
  *= skin-green.css
+ *= datatables.min.css
  *= require_self
  */
