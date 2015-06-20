@@ -11,6 +11,11 @@
 </head>
   <%= render 'layouts/nav' %>
 <body>
-<%= yield %>
+  <div class="ui page grid">
+    <%= yield %>
+  </div>
 </body>
+<script>
+$('.ui.dropdown').dropdown();
+</script>
 </html>

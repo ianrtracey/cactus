@@ -1,22 +1,9 @@
-      <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-          <h1>
-            Registrations
-            <small>Control panel</small>
-          </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Registrations</li>
-          </ol>
-        </section>
+<div class="sixteen wide column">
 
-        <!-- Main content -->
-        <section class="content">
-          <!-- Small boxes (Stat box) -->
-          <div class="row">
-            <table id="registrants" class="display" cellspacing="0" width="100%">
+  <div class="ui card fluid">
+    <div class="content">
+      <h1 class="ui header">Registrations</h1>
+      <table id="registrants" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th>Name</th>
@@ -45,22 +32,16 @@
                 <td><%= link_to "#{hack_app.first_name} #{hack_app.last_name}", hack_app %></td>
                 <td><%= hack_app.email %></td>
                 <td><%= hack_app.school %></td>
-                <td><%= hack_app.do_you_need_travel_reimbursement? %></td>
-                <td><%= hack_app.is_this_your_first_hackathon? %></td>
-                <td><%= hack_app.status %></td>
+                <td><%= pretty_travel_reimbursement(hack_app.do_you_need_travel_reimbursement?) %></td>
+                <td><%= pretty_first_time_hacker(hack_app.is_this_your_first_hackathon?) %></td>
+                <td><%= pretty_status(hack_app.status) %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
-
-
-
-          </div><!-- /.row (main row) -->
-
-
-        </section><!-- /.content -->
-      </div><!-- /.content-wrapper -->
-
+    </div>
+  </div>
+</div>
 <script>
 $(document).ready(function() {
     $('#registrants').DataTable();

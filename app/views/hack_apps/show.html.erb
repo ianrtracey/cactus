@@ -1,159 +1,93 @@
-      <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-          <h1>
-            Registration Form
-          </h1>
-          <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li>Registration</li>
-            <li class="active">Form</li>
-          </ol>
-        </section>
-<div class="pad margin no-print">
-	 	<% if @hack_app.status == "Undecided" %>			
-          <div class="callout callout-warning" style="margin-bottom: 0!important;">								
-            <h4><i class="fa fa-info"></i> Undecided</h4>
-            This registration is currently undecided
-          </div>
-        </div>
-        <% elsif @hack_app.status == "Approved" %>			
-          <div class="callout callout-success" style="margin-bottom: 0!important;">								
-            <h4><i class="fa fa-check-square-o"></i> Approved</h4>
-            This registration has been approved
-          </div>
-        </div>
-        <% else %>
-        <div class="callout callout-danger" style="margin-bottom: 0!important;">								
-            <h4><i class="fa fa-check-square-o"></i> Denied</h4>
-            This registration has been denied
-          </div>
-        </div>
-        <% end %>
- <section class="invoice">
-          <!-- title row -->
-          <div class="row">
-            <div class="col-xs-12">
-              <h2 class="page-header">
-                <p><%= "#{@hack_app.first_name} #{@hack_app.last_name}" %>
-              </h2>
-            </div><!-- /.col -->
-          </div>
-          <!-- info row -->
-          <div class="row invoice-info">
-            <div class="col-sm-8 invoice-col">
-              <address>
-                <strong>School: <%= @hack_app.school %></strong><br>
-                Email: <%= @hack_app.email %><br>
-                Gender: <%= @hack_app.gender %><br>
-                Age: <%=@hack_app.age %><br>
-              </address>
-            </div><!-- /.col -->
+<div class="twelve wide column centered">
+  <div class="ui card fluid">
 
-            <div class="col-sm-4 invoice-col">
-             <% if @hack_app.is_this_your_first_hackathon? %>
-              <h4><span class="label label-success">First Time Hacker</span></h4>
-             <% end %>
-             <% if @hack_app.do_you_need_travel_reimbursement? %>
-              <h4><span class="label label-primary">Requests Travel Reimbursement</span></h4>
-             <% end %>
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-
-          <!-- Table row -->
-          <div class="row">
-          		<h3>Registrant Resources</h3>
-            <div class="col-xs-12 table-responsive">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>Github</th>
-                    <th>Linkedin</th>
-                    <th>Resume</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                	<td><%= @hack_app.github %></td>
-                	<td><%= @hack_app.linkedin %></td>
-                	<td><%= @hack_app.resume %></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div><!-- /.col -->
-            <div class="col-xs-12 table-responsive">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>School</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                	<td><%= "Jim Halbert" %></td>
-                	<td><%= "jim@purdue.edu" %></td>
-                	<td><%= "Purdue University" %></td>
-                	<td><span class="label label-success">Approved</span></td>
-                  </tr>
-                  <tr>
-                	<td><%= "Phil Coffee" %></td>
-                	<td><%= "jim@arizona.edu" %></td>
-                	<td><%= "University of Arizona" %></td>
-                	<td><span class="label label-warning">Undecided</span></td>
-                  </tr>
-                  <tr>
-                	<td><%= "Tim Tracey" %></td>
-                	<td><%= "tim@cmu.edu" %></td>
-                	<td><%= "Carnegie Mellon University" %></td>
-                	<td><span class="label label-danger">Denied</span></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-
-          <div class="row">
-            <!-- accepted payments column -->
-            <div class="col-xs-6">
-              <p class="lead">Travel Reimbursement</p>
-              <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-                Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
-              </p>
-            </div><!-- /.col -->
-            <div class="col-xs-6">
-              <div class="table-responsive">
-                <table class="table">
-                  <tbody><tr>
-                    <th style="width:50%">Submitted</th>
-                    <td><%= @hack_app.created_at.to_date %></td>
-                  </tr>
-                  <tr>
-                    <th>Decision Date</th>
-                    <td><%= @hack_app.decision_date %></td>
-                  </tr>
-                  <tr>
-                    <th>Made By</th>
-                    <td><%= @hack_app.decision_made_by %></td>
-                  </tr>
-
-                </tbody></table>
+      <div class="content">
+        <%= pretty_status_ribbon(@hack_app.status) %>
+        <h1 class="ui header"><%= "#{@hack_app.first_name} #{@hack_app.last_name} #{@hack_app.is_this_your_first_hackathon?}" %></h1>
+        <h3 class="ui header"><%= @hack_app.created_at %></h3>
+        <div class="ui raised segment">
+          <div class="ui list">
+              <div class="item">
+                <i class="mail icon"></i>
+                <div class="content">
+                  <a class="header"><%= @hack_app.email %></a>
+                </div>
               </div>
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-
-          <!-- this row will not appear when printing -->
-          <div class="row no-print">
-            <div class="col-xs-12">
-              <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-              <button class="btn btn-danger pull-right">Deny</button>
-              <button class="btn btn-success pull-right" style="margin-right: 5px;">Approve</button>
- 			 <%= link_to("Approve", hack_app_path(@hack_app, :status => "Approved"), :method => :put) %>
+              <div class="item">
+                <i class="pencil icon"></i>
+                <div class="content">
+                  <a class="header"><%= @hack_app.school %></a>
+                </div>
+              </div>
+              <div class="item">
+                <i class="user icon"></i>
+                <div class="content">
+                  <a class="header"><%= @hack_app.gender %></a>
+                </div>
+              </div>
+              <div class="item">
+                <i class="calendar icon"></i>
+                <div class="content">
+                  <a class="header"><%= @hack_app.age %></a>
+                </div>
+              </div>
             </div>
-          </div>
-        </section>
-      </div><!-- /.content-wrapper -->
+        </div>
+<div class="ui raised segment">
+  <div class="ui horizontal list centered">
+              <div class="item">
+                <div class="ui large labeled icon button">
+                  <i class="large github icon"></i>
+                  Github
+                </div>
+              </div>
+              <div class="item">
+                <div class="ui large labeled icon button">
+                  <i class="large linkedin icon"></i>
+                  Linkedin
+                </div>
+              </div>
+              <div class="item">
+                <div class="ui large labeled icon button">
+                  <i class="large laptop icon"></i>
+                  Website
+                </div>
+              </div>
+              <div class="item">
+                <div class="ui large labeled icon button">
+                  <i class="large file outline icon"></i>
+                  Resume
+                </div>
+              </div>   
 
+  </div>
+</div>
+            <div class="ui raised segment">
+              <h4 class="ui header">Why Hack Arizona?</h4>
+                <p><%= @hack_app.why_hack_arizona %><p>
+            </div>
+
+            <div class="ui raised segment">
+              <h4 class="ui header">Tell Us Your Past Projects</h4>
+                <p><%= @hack_app.past_projects %><p>
+            </div>
+
+
+
+      </div>
+      <div class="extra content">
+        <div class="ui green animated button">
+          <div class="visible content">Approve</div>
+          <div class="hidden content">
+          <i class="check icon"></i>
+          </div>
+        </div>
+        <div class="ui red animated button">
+          <div class="visible content">Deny</div>
+          <div class="hidden content">
+          <i class="ban icon"></i>
+          </div>
+        </div>
+  </div>
+    </div>
+</div>
