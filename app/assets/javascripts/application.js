@@ -13,7 +13,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= requie demo.js
-//= require dataTables/jquery.dataTables
-//= datatables.js
 //= require_tree .
