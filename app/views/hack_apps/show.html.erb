@@ -3,7 +3,8 @@
 
       <div class="content">
         <%= pretty_status_ribbon(@hack_app.status) %>
-        <h1 class="ui header"><%= "#{@hack_app.first_name} #{@hack_app.last_name} #{@hack_app.is_this_your_first_hackathon?}" %></h1>
+        <h1 class="ui header"><%= "#{@hack_app.first_name} #{@hack_app.last_name} #{pretty_first_time_hacker_tag(@hack_app.is_this_your_first_hackathon?)}" %>
+        </h1>
         <h3 class="ui header"><%= @hack_app.created_at %></h3>
         <div class="ui raised segment">
           <div class="ui list">
@@ -72,7 +73,38 @@
                 <p><%= @hack_app.past_projects %><p>
             </div>
 
+            <div class="ui raised segment">
+              <h2 class="ui header">Teammates</h2>
+              <div class="ui horizontal list">
+                <div class="item">
+                  <div class="content">
+                    <div class="header">Tom</div>
+                    Top Contributor
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="content">
+                    <div class="header">Christian Rocha</div>
+                    Admin
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="content">
+                    <div class="header">Matt</div>
+                    Top Rated User
+                  </div>
+                </div>
+              </div>
+            </div>
 
+<%= simple_form_for @hack_app, remote: true do |fa| %>
+  <%= fa.hidden_field :status, :value => "Approved" %>
+  <%= fa.submit "Approve" %>
+<% end %>
+<%= simple_form_for @hack_app, remote: true do |fa| %>
+  <%= fa.hidden_field :status, :value => "Denied" %>
+  <%= fa.submit "Deny" %>
+<% end %>
 
       </div>
       <div class="extra content">

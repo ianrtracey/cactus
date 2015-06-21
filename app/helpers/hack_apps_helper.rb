@@ -34,4 +34,10 @@ module HackAppsHelper
 		  return '<a class="ui huge red right ribbon label">Denied</a>'.html_safe
 		end
 	end
+
+	def pretty_first_time_hacker_tag(is_first_time_hacker)
+		if is_first_time_hacker
+		  return '<a class="ui blue tag label">1st Time Hacker</a>'.html_safe
+		end
+	end
 end
