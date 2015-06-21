@@ -3,7 +3,7 @@
 
       <div class="content">
         <%= pretty_status_ribbon(@hack_app.status) %>
-        <h1 class="ui header"><%= "#{@hack_app.first_name} #{@hack_app.last_name} #{pretty_first_time_hacker_tag(@hack_app.is_this_your_first_hackathon?)}" %>
+        <h1 class="ui header"><%= "#{@hack_app.first_name} #{@hack_app.last_name}" %><%= pretty_favorite(@hack_app.favorite) %>
         </h1>
         <h3 class="ui header"><%= @hack_app.created_at %></h3>
         <div class="ui raised segment">
@@ -104,6 +104,10 @@
 <%= simple_form_for @hack_app, remote: true do |fa| %>
   <%= fa.hidden_field :status, :value => "Denied" %>
   <%= fa.submit "Deny" %>
+<% end %>
+<%= simple_form_for @hack_app, remote: true do |fa| %>
+  <%= fa.hidden_field :favorite, :value => true %>
+  <%= fa.submit  "Favorite" %>
 <% end %>
 
       </div>

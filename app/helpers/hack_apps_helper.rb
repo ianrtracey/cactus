@@ -3,9 +3,9 @@ module HackAppsHelper
 		if status == "Undecided"
 		  return '<span class="ui yellow label">Undecided</span>'.html_safe
 		elsif status == "Approved"
-		  return '<span class="ui yellow label">Approved</span>'.html_safe
+		  return '<span class="ui green label">Approved</span>'.html_safe
 		else
-		  return '<span class="ui yellow label">Denied</span>'.html_safe
+		  return '<span class="ui red label">Denied</span>'.html_safe
 		end
 	end
 
@@ -39,5 +39,13 @@ module HackAppsHelper
 		if is_first_time_hacker
 		  return '<a class="ui blue tag label">1st Time Hacker</a>'.html_safe
 		end
+	end
+
+	def pretty_favorite(is_favorite)
+		if is_favorite
+		  return '<div class="ui huge label">
+  					<i class="star icon"></i> Favorited
+				 </div>'.html_safe
+		 end
 	end
 end
