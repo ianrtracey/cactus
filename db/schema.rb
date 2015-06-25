@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150621213400) do
+ActiveRecord::Schema.define(version: 20150625010600) do
 
   create_table "hack_apps", force: :cascade do |t|
     t.datetime "created_at",                                              null: false
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20150621213400) do
     t.datetime "decision_date"
     t.integer  "decision_made_by"
     t.boolean  "favorite",                          default: false
+    t.text     "note",                              default: ""
   end
 
   add_index "hack_apps", ["hackathon_id"], name: "hackathon_id_ix"

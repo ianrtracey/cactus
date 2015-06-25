@@ -59,7 +59,7 @@
                   <i class="large file outline icon"></i>
                   Resume
                 </div>
-              </div>   
+              </div>
 
   </div>
 </div>
@@ -97,17 +97,11 @@
               </div>
             </div>
 
-<%= simple_form_for @hack_app, remote: true do |fa| %>
-  <%= fa.hidden_field :status, :value => "Approved" %>
-  <%= fa.submit "Approve" %>
-<% end %>
-<%= simple_form_for @hack_app, remote: true do |fa| %>
-  <%= fa.hidden_field :status, :value => "Denied" %>
-  <%= fa.submit "Deny" %>
-<% end %>
+
+
 <%= simple_form_for @hack_app, remote: true do |fa| %>
   <%= fa.hidden_field :favorite, :value => true %>
-  <%= fa.submit  "Favorite" %>
+  <%= fa.submit "Favorite" %>
 <% end %>
 
       </div>
@@ -116,14 +110,36 @@
           <div class="visible content">Approve</div>
           <div class="hidden content">
           <i class="check icon"></i>
+          <%= simple_form_for @hack_app, remote: true do |fa| %>
+            <%= fa.hidden_field :status, :value => "Approved" %>
+            <%= fa.submit "Approve", :style => 'border:none' %>
+          <% end %>
           </div>
         </div>
         <div class="ui red animated button">
           <div class="visible content">Deny</div>
           <div class="hidden content">
           <i class="ban icon"></i>
+          <%= simple_form_for @hack_app, remote: true do |fa| %>
+            <%= fa.hidden_field :status, :value => "Denied" %>
+            <%= fa.submit "Deny" %>
+          <% end %>
           </div>
         </div>
-  </div>
+        <%= @hack_app.note %>
+        <a class="ui link" id="expand-note">Add Note</a>
+        <div class="ui segment" id="note">
+          <%= simple_form_for @hack_app, remote: true do |fa| %>
+            <%= fa.input_field :note %>
+            <%= fa.submit "submit" %>
+          <% end %>
+        </div>
+      </div>
     </div>
-</div>
+</div
+
+<script>
+$('#expand-note').click(function() {
+  $('#note').toggle("slow");
+});
+</script>
