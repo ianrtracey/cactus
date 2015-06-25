@@ -15,6 +15,7 @@
         <i class="search link icon"></i>
       </div>
     </div>
+<% if signed_in? %>
     <div class="ui dropdown item">
       <%= current_user.email %><i class="dropdown icon"></i>
       <div class="menu">
@@ -22,6 +23,7 @@
         <a class="item">Logout</a>
       </div>
     </div>
+<% end %>
     <div class="item">
     </div>
   </div>
