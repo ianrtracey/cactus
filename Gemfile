@@ -31,6 +31,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'simple_form'
 
+
+
 # Used for Seeding the DB
 gem 'fabrication'
 gem 'faker'
@@ -39,8 +41,8 @@ gem 'faker'
 gem 'roo'
 
 # Used for displaying fancy tables
-gem 'jquery-datatables-rails', '~> 3.3.0'
-
+gem 'jquery-datatables-rails'
+gem 'ajax-datatables-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -54,4 +56,3 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-

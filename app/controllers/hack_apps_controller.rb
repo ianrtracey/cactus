@@ -4,7 +4,10 @@ class HackAppsController < ApplicationController
   # GET /hack_apps
   # GET /hack_apps.json
   def index
-    @hack_apps = HackApp.all
+    respond_to do |format|
+      format.html
+      format.json { render json: HackAppsDatatable.new(view_context) }
+    end
   end
 
   # GET /hack_apps/1
@@ -42,6 +45,7 @@ class HackAppsController < ApplicationController
   # PATCH/PUT /hack_apps/1.json
   def update
     respond_to do |format|
+        format.html
       if @hack_app.update(hack_app_params)
         format.html { redirect_to @hack_app, notice: 'Hack app was successfully updated.' }
         format.json { render :show, status: :ok, location: @hack_app }

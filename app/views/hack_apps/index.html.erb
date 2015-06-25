@@ -3,7 +3,7 @@
   <div class="ui card fluid">
     <div class="content">
       <h1 class="ui header">Registrations</h1>
-      <table id="registrants" class="display" cellspacing="0" width="100%">
+      <!-- <table id="registrants" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th>Name</th>
@@ -14,7 +14,7 @@
                 <th>Status</th>
             </tr>
         </thead>
- 
+
         <tfoot>
             <tr>
                 <th>Name</th>
@@ -25,25 +25,38 @@
                 <th>Status</th>
             </tr>
         </tfoot>
- 
+
         <tbody>
-          <% @hack_apps.each do |hack_app| %>
-            <tr>
-                <td><%= link_to "#{hack_app.first_name} #{hack_app.last_name}", hack_app %></td>
-                <td><%= hack_app.email %></td>
-                <td><%= hack_app.school %></td>
-                <td><%= pretty_travel_reimbursement(hack_app.do_you_need_travel_reimbursement?) %></td>
-                <td><%= pretty_first_time_hacker(hack_app.is_this_your_first_hackathon?) %></td>
-                <td><%= pretty_status(hack_app.status) %></td>
-            </tr>
-          <% end %>
+
         </tbody>
       </table>
     </div>
   </div>
-</div>
+</div> -->
+<table id="hack-apps-table", data-source="<%= hack_apps_path(format: :json) %>">
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Status</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
 <script>
-$(document).ready(function() {
-    $('#registrants').DataTable();
-} );
+jQuery(document).ready(function() {
+  $('#hack-apps-table').dataTable({
+    "processing": true,
+    "serverSide": true,
+    "ajax": $('#hack-apps-table').data('source'),
+    "pagingType": "full_numbers",
+    // optional, if you want full pagination controls.
+    // Check dataTables documentation to learn more about
+    // available options.
+  });
+});
 </script>
